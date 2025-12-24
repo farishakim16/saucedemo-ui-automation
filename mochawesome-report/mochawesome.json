@@ -1,0 +1,119 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-12-24T08:30:17.238Z",
+    "end": "2025-12-24T08:30:21.821Z",
+    "duration": 4583,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "135056da-f956-4b48-8540-db23e8945020",
+      "title": "",
+      "fullFile": "C:\\Users\\faris\\Documents\\saucedemo-ui-automation\\test\\login.test.js",
+      "file": "\\test\\login.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a7af3f81-81c6-4203-bfae-173ac7e0473c",
+          "title": "Login Page Tests",
+          "fullFile": "C:\\Users\\faris\\Documents\\saucedemo-ui-automation\\test\\login.test.js",
+          "file": "\\test\\login.test.js",
+          "beforeHooks": [],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Login Page Tests\"",
+              "fullTitle": "Login Page Tests \"after all\" hook in \"Login Page Tests\"",
+              "timedOut": false,
+              "duration": 109,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "bb5d8108-a122-437b-8e1f-b4b7981cc98e",
+              "parentUUID": "a7af3f81-81c6-4203-bfae-173ac7e0473c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Login sukses & sort produk Z-A",
+              "fullTitle": "Login Page Tests Login sukses & sort produk Z-A",
+              "timedOut": false,
+              "duration": 4468,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser(\"chrome\").build();\nawait driver.get(\"https://www.saucedemo.com/\");\n// login\nawait driver.findElement(By.css('[data-test=\"username\"]'))\n  .sendKeys(\"standard_user\");\nawait driver.findElement(By.css('[data-test=\"password\"]'))\n  .sendKeys(\"secret_sauce\");\nawait driver.findElement(By.css('[data-test=\"login-button\"]')).click();\nawait driver.wait(\n  until.elementsLocated(By.css(\".inventory_item_name\")),\n  10000\n);\n// Sort produk Z-A\nconst sortDropdown = await driver.findElement(\n  By.css('[data-test=\"product-sort-container\"]')\n);\nawait sortDropdown.click();\nconst optionZA = await driver.findElement(\n  By.css('option[value=\"za\"]')\n);\nawait optionZA.click();\nawait driver.wait(\n  until.elementsLocated(By.css(\".inventory_item_name\")),\n  10000\n);\nconst products = await driver.findElements(\n  By.css(\".inventory_item_name\")\n);\nconst firstName = await products[0].getText();\nconst lastName = await products[products.length - 1].getText();\nconsole.log(\"FIRST PRODUCT:\", firstName);\nconsole.log(\"LAST PRODUCT :\", lastName);\nassert.ok(\n  firstName.localeCompare(lastName) > 0,\n  \"Produk tidak terurut dari Z ke A\"\n);",
+              "err": {},
+              "uuid": "25f84d12-d213-4a05-b724-d50d557b7fad",
+              "parentUUID": "a7af3f81-81c6-4203-bfae-173ac7e0473c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "25f84d12-d213-4a05-b724-d50d557b7fad"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4468,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.5"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}

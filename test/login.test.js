@@ -5,7 +5,7 @@ describe("Login Page Tests", function () {
   this.timeout(60000);
   let driver;
 
-  it("Login sukses & sort produk Z-A", async function () {
+  it("Login sukses & sort produk A-Z", async function () {
     driver = await new Builder().forBrowser("chrome").build();
 
     await driver.get("https://www.saucedemo.com/");
@@ -22,16 +22,16 @@ describe("Login Page Tests", function () {
       10000
     );
 
-    // Sort produk Z-A
+    // sort produk A-Z
     const sortDropdown = await driver.findElement(
       By.css('[data-test="product-sort-container"]')
     );
     await sortDropdown.click();
 
-    const optionZA = await driver.findElement(
-      By.css('option[value="za"]')
+    const optionAZ = await driver.findElement(
+      By.css('option[value="az"]')
     );
-    await optionZA.click();
+    await optionAZ.click();
 
     await driver.wait(
       until.elementsLocated(By.css(".inventory_item_name")),
@@ -45,12 +45,11 @@ describe("Login Page Tests", function () {
     const firstName = await products[0].getText();
     const lastName = await products[products.length - 1].getText();
 
-    // console.log("FIRST PRODUCT:", firstName);
-    // console.log("LAST PRODUCT :", lastName);
-
+    console.log("Produk pertama:", firstName);
+    console.log("Produk terakhir:", lastName);  
     assert.ok(
-      firstName.localeCompare(lastName) > 0,
-      "Produk tidak terurut dari Z ke A"
+      firstName.localeCompare(lastName) < 0,
+      "Produk tidak terurut dari A ke Z"
     );
   });
 

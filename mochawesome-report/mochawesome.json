@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-12-24T08:30:17.238Z",
-    "end": "2025-12-24T08:30:21.821Z",
-    "duration": 4583,
+    "start": "2025-12-24T08:40:22.847Z",
+    "end": "2025-12-24T08:40:24.761Z",
+    "duration": 1914,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,18 +18,18 @@
   },
   "results": [
     {
-      "uuid": "135056da-f956-4b48-8540-db23e8945020",
+      "uuid": "78096767-5692-408e-996d-0e8672a00ac2",
       "title": "",
-      "fullFile": "C:\\Users\\faris\\Documents\\saucedemo-ui-automation\\test\\login.test.js",
+      "fullFile": "C:\\laragon\\www\\saucedemo-ui-automation\\test\\login.test.js",
       "file": "\\test\\login.test.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "a7af3f81-81c6-4203-bfae-173ac7e0473c",
+          "uuid": "3a13e913-107b-4a1c-ad20-b10e5f49c012",
           "title": "Login Page Tests",
-          "fullFile": "C:\\Users\\faris\\Documents\\saucedemo-ui-automation\\test\\login.test.js",
+          "fullFile": "C:\\laragon\\www\\saucedemo-ui-automation\\test\\login.test.js",
           "file": "\\test\\login.test.js",
           "beforeHooks": [],
           "afterHooks": [
@@ -37,7 +37,7 @@
               "title": "\"after all\" hook in \"Login Page Tests\"",
               "fullTitle": "Login Page Tests \"after all\" hook in \"Login Page Tests\"",
               "timedOut": false,
-              "duration": 109,
+              "duration": 112,
               "state": null,
               "speed": null,
               "pass": false,
@@ -46,40 +46,40 @@
               "context": null,
               "code": "if (driver) await driver.quit();",
               "err": {},
-              "uuid": "bb5d8108-a122-437b-8e1f-b4b7981cc98e",
-              "parentUUID": "a7af3f81-81c6-4203-bfae-173ac7e0473c",
+              "uuid": "16630b49-c218-4e92-9c8e-d1a1802c10e6",
+              "parentUUID": "3a13e913-107b-4a1c-ad20-b10e5f49c012",
               "isHook": true,
               "skipped": false
             }
           ],
           "tests": [
             {
-              "title": "Login sukses & sort produk Z-A",
-              "fullTitle": "Login Page Tests Login sukses & sort produk Z-A",
+              "title": "Login sukses & sort produk A-Z",
+              "fullTitle": "Login Page Tests Login sukses & sort produk A-Z",
               "timedOut": false,
-              "duration": 4468,
+              "duration": 1793,
               "state": "passed",
               "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "driver = await new Builder().forBrowser(\"chrome\").build();\nawait driver.get(\"https://www.saucedemo.com/\");\n// login\nawait driver.findElement(By.css('[data-test=\"username\"]'))\n  .sendKeys(\"standard_user\");\nawait driver.findElement(By.css('[data-test=\"password\"]'))\n  .sendKeys(\"secret_sauce\");\nawait driver.findElement(By.css('[data-test=\"login-button\"]')).click();\nawait driver.wait(\n  until.elementsLocated(By.css(\".inventory_item_name\")),\n  10000\n);\n// Sort produk Z-A\nconst sortDropdown = await driver.findElement(\n  By.css('[data-test=\"product-sort-container\"]')\n);\nawait sortDropdown.click();\nconst optionZA = await driver.findElement(\n  By.css('option[value=\"za\"]')\n);\nawait optionZA.click();\nawait driver.wait(\n  until.elementsLocated(By.css(\".inventory_item_name\")),\n  10000\n);\nconst products = await driver.findElements(\n  By.css(\".inventory_item_name\")\n);\nconst firstName = await products[0].getText();\nconst lastName = await products[products.length - 1].getText();\nconsole.log(\"FIRST PRODUCT:\", firstName);\nconsole.log(\"LAST PRODUCT :\", lastName);\nassert.ok(\n  firstName.localeCompare(lastName) > 0,\n  \"Produk tidak terurut dari Z ke A\"\n);",
+              "code": "driver = await new Builder().forBrowser(\"chrome\").build();\nawait driver.get(\"https://www.saucedemo.com/\");\n// login\nawait driver.findElement(By.css('[data-test=\"username\"]'))\n  .sendKeys(\"standard_user\");\nawait driver.findElement(By.css('[data-test=\"password\"]'))\n  .sendKeys(\"secret_sauce\");\nawait driver.findElement(By.css('[data-test=\"login-button\"]')).click();\nawait driver.wait(\n  until.elementsLocated(By.css(\".inventory_item_name\")),\n  10000\n);\n// sort produk A-Z\nconst sortDropdown = await driver.findElement(\n  By.css('[data-test=\"product-sort-container\"]')\n);\nawait sortDropdown.click();\nconst optionAZ = await driver.findElement(\n  By.css('option[value=\"az\"]')\n);\nawait optionAZ.click();\nawait driver.wait(\n  until.elementsLocated(By.css(\".inventory_item_name\")),\n  10000\n);\nconst products = await driver.findElements(\n  By.css(\".inventory_item_name\")\n);\nconst firstName = await products[0].getText();\nconst lastName = await products[products.length - 1].getText();\nconsole.log(\"Produk pertama:\", firstName);\nconsole.log(\"Produk terakhir:\", lastName);  \nassert.ok(\n  firstName.localeCompare(lastName) < 0,\n  \"Produk tidak terurut dari A ke Z\"\n);",
               "err": {},
-              "uuid": "25f84d12-d213-4a05-b724-d50d557b7fad",
-              "parentUUID": "a7af3f81-81c6-4203-bfae-173ac7e0473c",
+              "uuid": "594a0b2f-81ec-48f6-a5c3-29631a119769",
+              "parentUUID": "3a13e913-107b-4a1c-ad20-b10e5f49c012",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "25f84d12-d213-4a05-b724-d50d557b7fad"
+            "594a0b2f-81ec-48f6-a5c3-29631a119769"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 4468,
+          "duration": 1793,
           "root": false,
           "rootEmpty": false,
           "_timeout": 60000
